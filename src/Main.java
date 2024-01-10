@@ -1,6 +1,7 @@
 import daos.DataBase;
 import daos.UserDao;
 import models.Announcement;
+import models.Favorite;
 import models.Role;
 import models.User;
 import services.AnnouncementImpl;
@@ -15,7 +16,7 @@ public class Main {
         DataBase dataBase = new DataBase();
         UserDao userDao = new UserDao(dataBase);
         AnnouncementImpl announcement = new AnnouncementImpl(userDao);
-        FavoriteImpl favorite = new FavoriteImpl();
+        FavoriteImpl favorite = new FavoriteImpl(userDao);
         UserImpl user = new UserImpl(userDao);
         LOOP1:
         while (true) {
@@ -179,7 +180,31 @@ public class Main {
                                                     }
                                                     case 5 -> {
                                                         try {
-                                                            System.out.println(announcement.searchAnnouncement(new Scanner(System.in).nextLine()));
+                                                            Announcement delete = announcement.searchAnnouncement(new Scanner(System.in).nextLine());
+                                                            System.out.println("ID: "+ delete.getId());
+                                                            System.out.println("Name: "+ delete.getName());
+                                                            System.out.println("Description: "+ delete.getDescription());
+                                                            System.out.println("price: "+ delete.getPrice());
+                                                            System.out.println("Owner: "+ delete.getOwner().getUserName());
+                                                            System.out.println("Likes count: " + delete.getFavorite().getUserList().size());
+                                                            System.out.println("Likes people: " + delete.getFavorite().getUserList());
+
+                                                            System.out.println("Хотите поставить лайк? (55) ||  отменить лайк! (0)");
+                                                            try {
+                                                                int like = new Scanner(System.in).nextInt();
+                                                                switch (like){
+                                                                    case 55->{
+                                                                        System.out.println(favorite.addFavoriteToAnnouncement(currentUser, delete,new Favorite()));
+                                                                        System.out.println();
+                                                                    }
+                                                                    case 0->{
+                                                                        System.out.println(favorite.deleteFavoriteInAnnouncement(currentUser, delete));
+
+                                                                    }
+                                                                }
+                                                            }catch (InputMismatchException e){
+                                                                System.err.println("Write number!");
+                                                            }
 
                                                         } catch (Exception e) {
                                                             System.out.println(e.getMessage());
