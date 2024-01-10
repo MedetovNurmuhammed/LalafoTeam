@@ -70,7 +70,11 @@ public class Main {
                                                         System.out.println(announcement.addAnnouncement(currentUser));
                                                     }
                                                     case 2 -> {
-                                                        System.out.println(announcement.updateAnnouncement(currentUser));
+                                                        try {
+                                                            System.out.println(announcement.updateAnnouncement(currentUser));
+                                                        } catch (Exception e) {
+                                                            System.out.println(e.getMessage());
+                                                        }
                                                     }
                                                     case 3 -> {
                                                         System.out.println(announcement.deleteAnnouncement(currentUser));
