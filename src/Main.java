@@ -104,7 +104,7 @@ public class Main {
                                                         announcement.myProfile(currentUser);
                                                     }
                                                     case 0 -> {
-                                                        break LOOP3;
+                                                        break LOOP2;
                                                     }
 
                                                 }
@@ -131,6 +131,7 @@ public class Main {
                                                 int set = new Scanner(System.in).nextInt();
                                                 switch (set) {
                                                     case 3 -> {
+                                                        innerloop:
                                                         while (true) {
                                                             System.out.println("Write id");
                                                             try {
@@ -146,7 +147,7 @@ public class Main {
 
                                                     }
                                                     case 0 -> {
-                                                        break LOOP4;
+                                                        break LOOP2;
                                                     }
                                                 }
                                             } catch (InputMismatchException exception) {
@@ -224,7 +225,7 @@ public class Main {
 
                                                     }
                                                     case 0 -> {
-                                                        break LOOP5;
+                                                        break LOOP2;
                                                     }
 
                                                 }
