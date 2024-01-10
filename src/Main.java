@@ -54,10 +54,10 @@ public class Main {
                                                     4.Get all my announcements
                                                     5.My favorites
                                                     6.Analysis
-                                                    7.All Income
-                                                    8.Chat
-                                                    9.Update my profile
-                                                    10.Delete my profile
+                                                    7.Chat
+                                                    8.Update my profile
+                                                    9.Delete my profile
+                                                    10.My Profile
                                                     0.Exit
                                                                                        
                                                                                        
@@ -69,30 +69,38 @@ public class Main {
                                                         System.out.println(announcement.addAnnouncement(currentUser));
                                                     }
                                                     case 2 -> {
+                                                        System.out.println(announcement.updateAnnouncement(currentUser));
                                                     }
                                                     case 3 -> {
+                                                        System.out.println(announcement.deleteAnnouncement(currentUser));
+
                                                     }
                                                     case 4 -> {
+                                                        System.out.println(announcement.getAllAnnouncementsInUser(currentUser));
                                                     }
-                                                    case 5 -> {
+                                                    case 5 -> {announcement.myfavorites(currentUser);
+
                                                     }
                                                     case 6 -> {
+                                                        System.out.println(announcement.analysis(currentUser));
                                                     }
+
                                                     case 7 -> {
                                                     }
                                                     case 8 -> {
-                                                    }
-                                                    case 9 -> {
                                                         System.out.println(currentUser = user.updateProfile(currentUser));
 
                                                     }
-                                                    case 10 -> {
+                                                    case 9 -> {
                                                         try {
                                                             System.out.println(user.deleteProfile(currentUser));
                                                             break LOOP2;
                                                         } catch (Exception e) {
                                                             System.out.println(e.getMessage());
                                                         }
+                                                    }
+                                                    case 10->{
+                                                        announcement.myProfile(currentUser);
                                                     }
                                                     case 0 -> {
                                                         break LOOP3;
