@@ -82,13 +82,13 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", userName='" + userName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", role=" + role +
-                ", announcement=" + announcement +
+        return "User{" +"\n" +
+                " id=" + id +"\n" +
+                " userName='" + userName + "\n" +
+                " email='" + email + "\n" +
+                " password='" + password + "\n" +
+                " role=" + role +"\n" +
+                " announcement=" + announcement +"\n" +
                 '}';
     }
 }
