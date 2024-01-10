@@ -18,6 +18,7 @@ public class Main {
         AnnouncementImpl announcement = new AnnouncementImpl(userDao);
         FavoriteImpl favorite = new FavoriteImpl(userDao);
         UserImpl user = new UserImpl(userDao);
+
         LOOP1:
         while (true) {
             User currentUser = new User();
@@ -164,8 +165,10 @@ public class Main {
                                                 int set = new Scanner(System.in).nextInt();
                                                 switch (set) {
                                                     case 1 -> {
+                                                        System.out.println(favorite.getMyLikeAnnouncements(currentUser));
                                                     }
                                                     case 2 -> {
+
                                                     }
                                                     case 3 -> {
                                                         System.out.println(currentUser = user.updateProfile(currentUser));
@@ -180,6 +183,7 @@ public class Main {
                                                     }
                                                     case 5 -> {
                                                         try {
+                                                            System.out.println("Write title announcement: ");
                                                             Announcement delete = announcement.searchAnnouncement(new Scanner(System.in).nextLine());
                                                             System.out.println("ID: "+ delete.getId());
                                                             System.out.println("Name: "+ delete.getName());

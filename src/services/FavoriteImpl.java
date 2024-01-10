@@ -7,6 +7,7 @@ import models.Announcement;
 import models.Favorite;
 import models.User;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -38,5 +39,18 @@ public class FavoriteImpl implements FavoriteInterface {
     @Override
     public List<User> getAllFavorites(Announcement announcement) {
         return announcement.getFavorite().getUserList();
+    }
+
+    @Override
+    public List<Announcement> getMyLikeAnnouncements(User user) {
+        List<Announcement> announcements = new ArrayList<>();
+        for (int i = 0; i < userDao.getAllUsers().size(); i++) {
+            for (int i1 = 0; i1 < userDao.getAllUsers().get(i).getAnnouncement().size(); i1++) {
+                if (userDao.getAllUsers().get(i).getAnnouncement().get(i1).getFavorite().getUserList().contains(user)){
+                    announcements.add(userDao.getAllUsers().get(i).getAnnouncement().get(i1));
+
+                }
+            }
+        }return announcements;
     }
 }
