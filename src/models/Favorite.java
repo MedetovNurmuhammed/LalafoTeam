@@ -35,9 +35,9 @@ public class Favorite {
 
     @Override
     public String toString() {
-        return "Favorite{" +
-                "id=" + id +
-                ", userList=" + userList +
+        return "Favorite{" +"\n"+
+                "id=" + id +"\n"+
+                "userList=" + userList +"\n"+
                 '}';
     }
 }

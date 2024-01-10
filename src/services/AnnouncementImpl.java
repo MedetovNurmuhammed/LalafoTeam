@@ -5,13 +5,9 @@ import exceptions.Notfound;
 import generics.GenericChecks;
 import interFaces.AnnouncementInterface;
 import models.Announcement;
-import models.Favorite;
 import models.User;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class AnnouncementImpl implements AnnouncementInterface {
     public static Long id = 0L;
@@ -133,13 +129,13 @@ public class AnnouncementImpl implements AnnouncementInterface {
                 }
             }
         }
-        throw  new Notfound("Not found");
+        throw new Notfound("Not found");
     }
 
     @Override
-    public Announcement searchAnnouncement(String name,User user) {
+    public Announcement searchAnnouncement(String name, User user) {
         for (int i = 0; i < user.getAnnouncement().size(); i++) {
-            if (name.equalsIgnoreCase(user.getAnnouncement().get(i).getName())){
+            if (name.equalsIgnoreCase(user.getAnnouncement().get(i).getName())) {
                 return user.getAnnouncement().get(i);
             }
         }
@@ -153,10 +149,64 @@ public class AnnouncementImpl implements AnnouncementInterface {
             announcements.addAll(userDao.getAllUsers().get(i).getAnnouncement());
         }
         for (int i = 0; i < announcements.size(); i++) {
-            if (name.equalsIgnoreCase(announcements.get(i).getName())){
+            if (name.equalsIgnoreCase(announcements.get(i).getName())) {
                 return announcements.get(i);
             }
         }
         throw new Notfound("Not found");
     }
+
+    @Override
+    public void myfavorites(User user) {
+
+          boolean isTrue = true;
+     do {System.out.println("Write id Announcement:");
+         Long id = new Scanner(System.in).nextLong();
+
+
+         isTrue = false;
+
+         for (int i = 0; i < user.getAnnouncement().size(); i++) {
+             if (id.equals(user.getAnnouncement().get(i).getId())) {
+                 System.out.println("Name Announcement: "+user.getAnnouncement().get(i).getName());
+                 System.out.println("Count likes: " + user.getAnnouncement().get(i).getFavorite().getUserList().size());
+                 System.out.println("Likes people:" + user.getAnnouncement().get(i).getFavorite().getUserList());
+                 isTrue = true;
+                 break;
+             }
+         }
+
+         if (!isTrue) {
+             System.err.println("Not found! ");
+             break;
+         }
+
+     } while (!isTrue);
+    }
+
+    @Override
+    public void myProfile(User user) {
+        System.out.println("UserName: "+user.getUserName());
+        System.out.println("Count Announcement:"+user.getAnnouncement().size());
+        for (Announcement announcement : user.getAnnouncement()) {
+        System.out.println("Count Likes :"+announcement.getFavorite().getUserList().size());
+    }
+
+
 }
+
+    @Override
+    public List<Announcement> analysis(User user) {
+        Comparator <Announcement> sort  = new Comparator<Announcement>() {
+            @Override
+            public int compare(Announcement o1, Announcement o2) {
+                return o2.getFavorite().getUserList().size() - o1.getFavorite().getUserList().size();
+            }
+        };
+        List<Announcement> list = getAllAnnouncementsInUser(user);
+        list.sort(sort);
+        return list;
+    }
+}
+
+

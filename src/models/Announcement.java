@@ -70,13 +70,13 @@ public class Announcement {
 
     @Override
     public String toString() {
-        return "Announcement{" +
-                "id=" + id +
-                ", title='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", owner=" + owner.getUserName() +
-                ", favorite=" + favorite +
+        return "Announcement{" +"\n"+
+                "id=" + id +"\n"+
+                "title='" + name + "\n"+
+                "description='" + description + "\n"+
+                "price=" + price +
+                "owner=" + owner.getUserName() +"\n"+
+                "favorite=" + favorite +"\n"+
                 '}';
     }
 }
