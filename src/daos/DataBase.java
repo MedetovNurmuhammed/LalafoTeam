@@ -1,6 +1,4 @@
 package daos;
-
-import models.Role;
 import models.User;
 
 import java.util.ArrayList;
