@@ -28,8 +28,9 @@ public class Favorite {
         return userList;
     }
 
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
+    public void setUserList(User userList) {
+
+        this.userList.add(userList);
     }
 
     @Override

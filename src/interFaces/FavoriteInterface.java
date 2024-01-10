@@ -7,7 +7,7 @@ import models.User;
 import java.util.List;
 
 public interface FavoriteInterface {
-    String addFavoriteToAnnouncement(User user);
-    String deleteFavoriteInAnnouncement(User user);
-    List<Favorite> getAllFavorites(Announcement announcement);
+    String addFavoriteToAnnouncement(User user,Announcement announcement,Favorite favorite);
+    String deleteFavoriteInAnnouncement(User user,Announcement announcement);
+    List<User> getAllFavorites(Announcement announcement);
 }

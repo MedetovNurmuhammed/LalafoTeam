@@ -6,7 +6,7 @@ public class Announcement {
     private String description;
     private int price;
     private User owner;
-    private Favorite favorite;
+    private Favorite favorite = new Favorite();
 
     public Announcement(Long id, String name, String description, int price, User owner, Favorite favorite) {
         this.id = id;
@@ -75,7 +75,7 @@ public class Announcement {
                 ", title='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
-                ", owner=" + owner +
+                ", owner=" + owner.getUserName() +
                 ", favorite=" + favorite +
                 '}';
     }
