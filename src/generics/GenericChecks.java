@@ -1,6 +1,6 @@
 package generics;
 
-import exceptions.Notfound;
+
 import models.User;
 
 import java.util.List;
