@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
+
+    private List<Chat> chatPoleskelgen = new ArrayList<>();
+    private List<Chat> chatPolesketken = new ArrayList<>();
     private Long id;
     private String userName;
     private String email;
@@ -78,6 +81,23 @@ public class User {
 
     public void setAnnouncement(Announcement announcement) {
         this.announcement.add(announcement);
+    }
+
+
+    public List<Chat> getChatPoleskelgen() {
+        return chatPoleskelgen;
+    }
+
+    public void setChatPoleskelgen(List<Chat> chatPoleskelgen) {
+        this.chatPoleskelgen = chatPoleskelgen;
+    }
+
+    public List<Chat> getChatPolesketken() {
+        return chatPolesketken;
+    }
+
+    public void setChatPolesketken(List<Chat> chatPolesketken) {
+        this.chatPolesketken = chatPolesketken;
     }
 
     @Override

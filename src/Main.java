@@ -1,10 +1,8 @@
 import daos.DataBase;
 import daos.UserDao;
-import models.Announcement;
-import models.Favorite;
-import models.Role;
-import models.User;
+import models.*;
 import services.AnnouncementImpl;
+import services.ChatIml;
 import services.FavoriteImpl;
 import services.UserImpl;
 
@@ -91,6 +89,9 @@ public class Main {
                                                     }
 
                                                     case 7 -> {
+                                                        Chat chatPole =new Chat();
+                                                        ChatIml chatMethod = new ChatIml(userDao);
+                                                        currentUser = chatMethod.addnewChat(currentUser,currentUser.getChatPolesketken());
                                                     }
                                                     case 8 -> {
                                                         System.out.println(currentUser = user.updateProfile(currentUser));
@@ -181,7 +182,9 @@ public class Main {
                                                         System.out.println(favorite.getMyLikeAnnouncements(currentUser));
                                                     }
                                                     case 2 -> {
-
+                                                        Chat chatPole =new Chat();
+                                                        ChatIml chatMethod = new ChatIml(userDao);
+                                                        currentUser = chatMethod.addnewChat(currentUser,currentUser.getChatPolesketken());
                                                     }
                                                     case 3 -> {
                                                         System.out.println(currentUser = user.updateProfile(currentUser));
